@@ -1,0 +1,114 @@
+body {
+    margin: 0;
+    margin-top: 50px;
+    font-family: sans-serif; /* Add this line */
+}
+
+header {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50px;
+    line-height: 50px;
+    background-color: #e71aa3;
+}
+
+header * {
+    display: inline;
+    height: 50px;
+}
+
+header ul {
+    padding: 0;
+}
+
+header li {
+    margin-left: 20px;
+}
+
+section {
+    height: 100vh;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#home .yogurt-img {
+    height: 300px;
+    width: 300px;
+    border-radius: 50%;
+}
+
+footer {
+    text-align: center;
+    padding: 50px;
+    background-color: rgb(255,204,229);
+}
+
+#home h1 {
+    font-family: cursive;
+    font-size: 6em;
+    color: white
+}
+
+#history h2 {
+    font-family: cursive;
+    font-size: 4em;
+}
+
+#history .historic-img {
+    height: 200px;
+    width: 150px;
+}
+
+#history p{
+    margin-left: 100px;
+    margin-right: 100px;
+    text-align: justify;
+    font-size: 1.2em;
+}
+
+#type h2 {
+    font-family: cursive;
+    font-size: 4em;
+}
+
+#type .store-img {
+    height: 300px;
+    width: 300px;
+}
+
+#type .homemade-img {
+    height: 300px;
+    width: 300px;
+    border-radius: 50%;
+}
+
+#type p{
+    margin-left: 100px;
+    margin-right: 100px;
+    text-align: justify;
+    font-size: 1.2em;
+}
+
+header a {
+    font-family: cursive;
+    font-size: 1.5em;
+    color: white;
+}
+
+#home {
+    background-color: rgb(255,204,229);
+}
+
+#history {
+    background-image: url('https://img.freepik.com/free-vector/vintage-ornamental-flowers-background_52683-28040.jpg');
+}
+
+#type {
+    background-image: url('https://img.freepik.com/free-vector/white-abstract-wallpaper_23-2148830026.jpg?w=2000');
+}
