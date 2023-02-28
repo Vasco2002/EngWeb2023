@@ -37,6 +37,7 @@ pagHTML = """
              
 """
 for city in cities:
+    #tirando o char '#' e usando o server.js as páginas separadas das cidades conectam-se aos links no index.html
     pagHTML += f"<li><a href='#{city['id']}'>{city['nome']}</a></li>"
 
 pagHTML += """
