@@ -1,0 +1,22 @@
+{
+  "tasks": [
+    {
+      "id": "1",
+      "what": "Fazer compras no Mercado",
+      "who": "Jorge Menta",
+      "deadline": "2023-03-30"
+    },
+    {
+      "id": "2",
+      "what": "Cortar a relva",
+      "who": "Jessica Mendes",
+      "dueDate": "2023-04-05"
+    },
+    {
+      "id": "3",
+      "what": "Nothing at all",
+      "who": "Vasco Oliveira",
+      "dueDate": "2200-01-01"
+    }
+  ]
+}
