@@ -32,8 +32,8 @@ exports.tasksPage = function(tasks, max, d){
             </div>
 
             <div class="w3-row w3-border">
-                <div class="w3-container w3-half w3-card-4 w3-margin-top"><h3>Tasks to be done</h3></div>
-                <div class="w3-container w3-half w3-card-4 w3-margin-top"><h3>Completed Tasks</h3></div>
+                <div class="w3-container w3-half w3-card-4 w3-margin-top w3-light-blue"><h3>Tasks to be done</h3></div>
+                <div class="w3-container w3-half w3-card-4 w3-margin-top w3-light-blue"><h3>Completed Tasks</h3></div>
             </div>
             <div class="w3-row w3-border">
                 <div class="w3-container w3-half">
