@@ -3,20 +3,35 @@
     {
       "id": "1",
       "what": "Fazer compras no Mercado",
-      "who": "Jorge Menta",
-      "deadline": "2023-03-30"
+      "who": "Jorge Gomes Menta",
+      "deadline": "2023-03-22",
+      "done": 1
     },
     {
       "id": "2",
       "what": "Cortar a relva",
       "who": "Jessica Mendes",
-      "dueDate": "2023-04-05"
+      "deadline": "2023-04-05",
+      "done": 1
     },
     {
-      "id": "3",
       "what": "Nothing at all",
-      "who": "Vasco Oliveira",
-      "dueDate": "2200-01-01"
+      "who": "Nothing Man????",
+      "deadline": "2200-01-01",
+      "id": "3"
+    },
+    {
+      "id": "4",
+      "what": "Fazer o TPC 4 de Engenharia Web",
+      "who": "Vasco Manuel Araújo Andrade de Oliveira",
+      "deadline": "2023-03-14",
+      "done": 1
+    },
+    {
+      "id": "5",
+      "what": "Fazer o TPC 5 de Engenharia Web",
+      "who": "Vasco Manuel Araújo Andrade de Oliveira",
+      "deadline": "2023-03-22"
     }
   ]
 }

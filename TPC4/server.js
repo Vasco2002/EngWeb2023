@@ -39,7 +39,7 @@ var tasksServer = http.createServer(async function (req, res) {
             case "GET": 
                 // GET /tasks --------------------------------------------------------------------
                 if((req.url == "/") || (req.url == "/tasks")){
-                    axios.get("http://localhost:3000/tasks?_sort=dueDate")
+                    axios.get("http://localhost:3000/tasks?_sort=deadline")
                         .then(async response => {
                             var tasks = response.data
 
@@ -59,6 +59,51 @@ var tasksServer = http.createServer(async function (req, res) {
                             res.end()
                         })
                 }
+                // GET /tasks/edit/id --------------------------------------------------------------------
+                else if(/\/tasks\/edit\/[0-9]+$/i.test(req.url)){
+                    var idTask = req.url.split("/")[3]
+                    axios.get("http://localhost:3000/tasks/" + idTask)
+                        .then( async response => {
+                            let task = response.data
+                            res.writeHead(200, {'Content-Type': 'text/html;charset=utf-8'})
+                            res.end(templates.taskFormEditPage(task, d)) 
+                        })
+                        .catch(function(erro){
+                            res.writeHead(200, {'Content-Type': 'text/html;charset=utf-8'})
+                            res.write(`<p>Não foi possível buscar a tarefa ${idTask}... Erro: ${erro}`)
+                            res.end()
+                        })
+                    
+                }
+                // GET /tasks/done/id --------------------------------------------------------------------
+                else if(/\/tasks\/done\/[0-9]+$/i.test(req.url)){
+                    var idTask = req.url.split("/")[3]
+                    axios.get("http://localhost:3000/tasks/" + idTask)
+                        .then( response => {
+                            let a = response.data
+                            axios.put("http://localhost:3000/tasks/" + idTask, {
+                                "id": a.id,
+                                "what": a.what,
+                                "who": a.who,
+                                "deadline": a.deadline,
+                                "done": 1,
+                            }).then(resp => {
+                                console.log(resp.data)
+                                res.writeHead(302, {'Content-Type': 'text/html;charset=utf-8', 'Location': '/tasks'});
+                                res.end()
+                                
+                            }).catch(error => {
+                                console.log('Erro: ' + error);
+                                res.end()
+                            })
+
+                        })
+                        .catch(function(erro){
+                            res.writeHead(200, {'Content-Type': 'text/html;charset=utf-8'})
+                            res.write(`<p>Não foi possível obter o registo da tarefa ${idTask}... Erro: ${erro}`)
+                            res.end()
+                        })
+                }
                 else{
                     res.writeHead(200, {'Content-Type': 'text/html;charset=utf-8'})
                     res.write("<p>" + req.method + " " + req.url + " unsupported on this server.</p>")
@@ -75,7 +120,7 @@ var tasksServer = http.createServer(async function (req, res) {
                                     "id": result.id,
                                     "what": result.what,
                                     "who": result.who,
-                                    "dueDate": result.dueDate,
+                                    "deadline": result.deadline,
                                 }).then(resp => {
                                         console.log(resp.data);
                                         res.writeHead(302, {'Location': '/tasks'});
@@ -91,6 +136,33 @@ var tasksServer = http.createServer(async function (req, res) {
                             }
                         })
                         
+                    }
+                    else if(/\/tasks\/edit\/[0-9]+$/i.test(req.url)){
+                        var idTask = req.url.split("/")[3]
+                        collectRequestBodyData(req, result => {
+                            if(result){
+                                
+                                axios.put('http://localhost:3000/tasks/' + idTask, result)
+                                .then(resp => {
+                                        console.log(resp.data);
+                                        res.writeHead(302, {'Content-Type': 'text/html;charset=utf-8','Location': '/tasks'});
+                                        res.end()
+                                })
+                                .catch(error => {
+                                    console.log('Erro: ' + error);
+                                    console.log(result)
+                                    console.log(result.id)
+                                    res.writeHead(201, {'Content-Type': 'text/html;charset=utf-8'})
+                                    res.write("<p>Unable to update task record..</p>")
+                                    res.end()
+                                }) 
+                            }
+                            else{
+                                res.writeHead(201, {'Content-Type': 'text/html;charset=utf-8'})
+                                res.write("<p>Unable to collect data from body...</p>")
+                                res.end()
+                            }
+                        });
                     }
                     else{
                         res.writeHead(200, {'Content-Type': 'text/html;charset=utf-8'})
