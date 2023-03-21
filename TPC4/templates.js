@@ -7,7 +7,7 @@ exports.tasksPage = function(tasks, max, d){
             <meta charset="UTF-8"/>
             <link rel="icon" href="favicon.png"/>
             <link rel="stylesheet" href="w3.css"/>
-            <title>Student Form</title>
+            <title>To Do List</title>
         </head>
         <body>
         <main class="w3-center">
