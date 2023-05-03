@@ -1,0 +1,50 @@
+---------------------------------------------------
+Quantos exames estão registados?
+
+use EMD
+db.exames.count()
+---------------------------------------------------
+Quantos exames tiveram um resultado válido?
+
+use EMD
+db.exames.count({resultado: true})
+---------------------------------------------------
+Qual a distribuição dos exames por género?
+
+use EMD
+db.exames.aggregate([
+  {
+    '$group': {
+      '_id': '$género',
+      'count': {
+        '$sum': 1
+            }
+    }
+  }
+])
+---------------------------------------------------
+Qual a distribuição dos exames por modalidade?
+
+use EMD
+db.exames.aggregate([
+  {
+    '$group': {
+      '_id': '$modalidade',
+      'count': {
+        '$sum': 1
+            }
+    }
+  }
+])
+---------------------------------------------------
+Quantos atletas federados do "GDGoma" fizeram EMD?
+
+use EMD
+db.exames.count({clube: "GDGoma", federado: true})
+---------------------------------------------------
+Quantos atletas do género feminino que praticam Triatlo fizeram EMD?
+
+use EMD
+db.exames.count({género: "F", modalidade: "Triatlo"})
+---------------------------------------------------
+
